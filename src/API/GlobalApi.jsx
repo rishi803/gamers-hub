@@ -1,12 +1,12 @@
 import axios from "axios"; 
 
- const apiKey = "e16a4f37b912480ab2185227d7d5da47";
+ const apiKey = import.meta.env.VITE_API_KEY;
 
  console.log(apiKey);
  const axiosCreate = axios.create({
       baseURL: "https://api.rawg.io/api"
  })
-
+console.log("key= " + apiKey);
  const getGenreList = axiosCreate.get('/genres?key='+apiKey);
- console.log(getGenreList);
+
 export default getGenreList;
