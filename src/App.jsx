@@ -7,12 +7,12 @@ import Header from './Components/Header'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
   // pass props within {object}
  return(
   <ThemeContext.Provider value={{theme, setTheme}}>  
-     <div className={`${theme} ${theme == 'dark' ? 'bg-black' : 'bg-yellow-600'}`}>
+     <div className={`${theme} ${theme == 'dark' ? 'bg-black text-white' : 'bg-yellow-600'}`}>
       <Header/>
        <Home/>
      </div>

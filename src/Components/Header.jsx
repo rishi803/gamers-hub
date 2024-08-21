@@ -7,6 +7,10 @@ const Header = () => {
   const [toggle, setToggle] = useState(true);
   const {theme, setTheme} = useContext(ThemeContext);  // use curly braces during destructuring
 
+  const handleTheme = (theme)=>{
+    setTheme(theme);
+    localStorage.setItem("theme",theme);
+  }
   return (
     <div className="flex items-center p-3">
       <img src={logo1} width={60} height={60} alt="logo" />
@@ -19,16 +23,16 @@ const Header = () => {
         />
       </div>
       <div>
-        {toggle ? (
+        {theme == 'light' ? (
           <HiMoon
             className="text-[35px] cursor-pointer bg-gray-200 text-black p-1 rounded-full"
-            onClick={() => setToggle(!toggle)}
+            onClick={()=>handleTheme('dark')}
           />
         ) : (
           <HiSun
             className="text-[35px] cursor-pointer
        bg-gray-200 text-black p-1 rounded-full "
-            onClick={() => setToggle(!toggle)}
+            onClick={()=>handleTheme('light')}
           />
         )}
       </div>
